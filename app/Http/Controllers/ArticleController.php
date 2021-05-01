@@ -74,14 +74,10 @@ class ArticleController extends Controller
             Image::make($file)->save($pub.$name);
             $article->imagearticle = $name;
         }
-
-
         $article->save();
         return redirect('articles');
-
-        
     }
-
+    
     public function destroy($id){
         $article = Article::find($id);
 

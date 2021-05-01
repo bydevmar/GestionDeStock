@@ -6,23 +6,19 @@ use Illuminate\Http\Request;
 
 class CommandeController extends Controller
 {
-    public function __construct()
-    {
-        //$this->middleware('auth');
+    public function __construct(){
     }
 
     public function index(){
-        return view('pages.article.index');
+        return view('pages.commande.index');
     }
 
     public function create(){ }
 
     public function store(Request $r){
-        return view('pages.article.index');
     }
 
     public function edit($id){
-        return view("pages.article.edit");
     }
 
     public function update(Request $r,$id){}
