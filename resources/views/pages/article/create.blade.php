@@ -21,17 +21,17 @@
 
                     <div class="form-group >
                         <label for="nomarticle" class="mb-1">Nom :</label>
-                        <input type="text" id="nomarticle" name="nomarticle" class="form-control mb-4 " value="">                        
+                        <input type="text" id="nomarticle" name="nomarticle" class="form-control mb-4 " value="{{old('nomarticle')}}">                        
                     </div>
 
                     <div class="form-group ">
                         <label for="descriptionarticle" class="mb-1" >Description :</label>
-                        <textarea  name="descriptionarticle" id="descriptionarticle" class="form-control mb-4"></textarea>
+                        <textarea  name="descriptionarticle" id="descriptionarticle" class="form-control mb-4" >{{old('descriptionarticle')}}</textarea>
                     </div>
 
                     <div class="form-group ">
                         <label for="prixarticle" class="mb-1">Prix :</label>
-                        <input type="number" name="prixarticle" id="prixarticle" class="form-control mb-4" >
+                        <input type="number" name="prixarticle" id="prixarticle" class="form-control mb-4" value="{{old('prixarticle')}}">
                     </div>
 
                     <div class="form-group ">
