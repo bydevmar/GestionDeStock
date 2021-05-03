@@ -43,6 +43,9 @@ class ArticleController extends Controller
             $article->imagearticle = $name;
         }
         $article->save();
+        
+        session()->flash("success","Article a ete bien enregistré !!");
+
         return redirect('articles');
     }
 

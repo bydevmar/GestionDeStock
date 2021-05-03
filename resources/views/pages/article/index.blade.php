@@ -4,6 +4,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @if(session()->has("success"))
+                    <div class="alert alert-success" role="alert">
+                        {{session()->get("success")}}
+                    </div>
+                @endif
+                
 
                 <h1>Liste des articles</h1>
                 <div class="pull-right">
