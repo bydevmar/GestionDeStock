@@ -9,19 +9,40 @@
                     @csrf
                     {{ method_field('PUT') }}
                     
-                    <div class="form-group >
+                    <div class="form-group @if ($errors->get('nomarticle')) has-error @endif">
                         <label for="nomarticle" class="mb-1">Nom :</label>
                         <input type="text" id="nomarticle" name="nomarticle" class="form-control mb-4 " value="{{$article->nomarticle}}">                        
+                        
+                        @if ($errors->get('nomarticle'))                        
+                            @foreach ($errors->get('nomarticle') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        @endif
+
                     </div>
 
-                    <div class="form-group ">
+                    <div class="form-group @if ($errors->get('descriptionarticle')) has-error @endif">
                         <label for="descriptionarticle" class="mb-1" >Description :</label>
                         <textarea  name="descriptionarticle" id="descriptionarticle" class="form-control mb-4">{{$article->descriptionarticle}}</textarea>
+                    
+                        @if ($errors->get('descriptionarticle'))                        
+                            @foreach ($errors->get('descriptionarticle') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        @endif
+
                     </div>
 
-                    <div class="form-group ">
+                    <div class="form-group  @if ($errors->get('prixarticle')) has-error @endif">
                         <label for="prixarticle" class="mb-1">Prix :</label>
                         <input type="number" name="prixarticle" id="prixarticle" class="form-control mb-4" value="{{$article->prixarticle}}">
+                        
+                        @if ($errors->get('prixarticle'))                        
+                            @foreach ($errors->get('prixarticle') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        @endif
+
                     </div>
 
                     <div class="form-group ">
