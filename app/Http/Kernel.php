@@ -52,6 +52,8 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+    //les declarations des meddlware 
+    //'auth' c'est la class utilise dans article controller
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
