@@ -1,24 +1,23 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (count($errors))
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $message)
+                    <li>
+                        {{$message}}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container mt-2" >
         <div class="row">
             <div class="col-md-12 ">
                 <h1>Creation d'un Article</h1>
                 <form method="POST" action="{{url('/articles')}}" enctype="multipart/form-data">
                     @csrf
-                    
-                    <div class="form-group @if($errors->get('titre')) has-error @endif ">
-                        <label for="titre" class="mb-1">Titre :</label>
-                        <input type="text" id="titre" name="titre" class="form-control mb-4 " value="{{ old('titre') }}">
-                        @if ($errors->get('titre'))
-                            @foreach ($errors->get('titre') as $message)
-                                <li>
-                                    {{$message}}
-                                </li>
-                            @endforeach
-                        @endif
-                    </div>
 
                     <div class="form-group >
                         <label for="nomarticle" class="mb-1">Nom :</label>
@@ -48,16 +47,11 @@
                             @endforeach
                         </select>
                     </div>
-                    
-
-                    
-
-                    
 
                     <div class="form-group">
                         <input type="submit" class="form-control btn btn-primary" value="Enregistrer">
                     </div>
-
+                    
                 </form>
             </div>
         </div>

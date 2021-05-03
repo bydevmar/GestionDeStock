@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\articleRequest;
 use App\Models\Article;
 use App\Models\Categorie;
 use Facade\FlareClient\Http\Response;
@@ -28,7 +29,7 @@ class ArticleController extends Controller
         return view('pages.article.create',['categories'=>$categories]);
     }
 
-    public function store(Request $r){
+    public function store(articleRequest $r){
        $article = new Article();
         $article->nomarticle = $r->input('nomarticle');
         $article->descriptionarticle = $r->input('descriptionarticle');
@@ -52,7 +53,7 @@ class ArticleController extends Controller
         return view('pages.article.edit',['categories'=>$categories,'article'=>$article]);
     }
 
-    public function update(Request $r,$id){
+    public function update(articleRequest $r,$id){
         
         $article = Article::find($id);
         $article->nomarticle = $r->input('nomarticle');
