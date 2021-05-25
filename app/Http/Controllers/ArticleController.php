@@ -9,7 +9,8 @@ use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManagerStatic as Image;
+//use Intervention\Image\ImageManagerStatic as Image;
+
 
 use File;
 class ArticleController extends Controller
@@ -17,7 +18,7 @@ class ArticleController extends Controller
     public function __construct()
     {
         //il faut se connecter pour acceder a cette controller
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index(){
@@ -40,7 +41,7 @@ class ArticleController extends Controller
             $pub = public_path("storage\photos\\");
             $file = $r->file('imagearticle');
             $name = $file->getClientOriginalName();            
-            Image::make($file)->save($pub.$name);
+            //Image::make($file)->save($pub.$name);
             $article->imagearticle = $name;
         }
         $article->save();
@@ -76,7 +77,7 @@ class ArticleController extends Controller
             $pub = public_path("storage\photos\\");
             $file = $r->file('imagearticle');
             $name = $file->getClientOriginalName();            
-            Image::make($file)->save($pub.$name);
+            //Image::make($file)->save($pub.$name);
             $article->imagearticle = $name;
         }
         $article->save();
@@ -90,4 +91,3 @@ class ArticleController extends Controller
         return redirect("articles");
     }
 }
-

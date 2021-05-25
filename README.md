@@ -8,8 +8,6 @@
 </p>
 
 ## About Laravel
-##BOUHLALI Abdelfattah APP
-##BOUHLALI Abdelfattah APP
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
@@ -44,7 +42,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Many](https://www.many.co.uk)**
 - **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
 - **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
 - **[OP.GG](https://op.gg)**
 
 ## Contributing

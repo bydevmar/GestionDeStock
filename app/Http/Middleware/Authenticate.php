@@ -1,5 +1,5 @@
 <?php
-//voila la class authenticate utilise dans articlecontroller 
+
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
