@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 
 use File;
+
 class ArticleController extends Controller
 {
     public function __construct()
@@ -21,70 +22,75 @@ class ArticleController extends Controller
         //$this->middleware('auth');
     }
 
-    public function index(){
+    public function index()
+    {
         $articles = Article::all();
-        return view('pages.article.index',['articles'=>$articles]);
+        return view('pages.article.index', ['articles' => $articles]);
     }
 
-    public function create(){
-        $categories = Categorie::all(); 
-        return view('pages.article.create',['categories'=>$categories]);
+    public function create()
+    {
+        $categories = Categorie::all();
+        return view('pages.article.create', ['categories' => $categories]);
     }
 
-    public function store(articleRequest $r){
-       $article = new Article();
+    public function store(articleRequest $r)
+    {
+        $article = new Article();
         $article->nomarticle = $r->input('nomarticle');
         $article->descriptionarticle = $r->input('descriptionarticle');
         $article->prixarticle = $r->input('prixarticle');
         $article->categorie_id = $r->categories;
-        if($r->hasFile('imagearticle')){
+        if ($r->hasFile('imagearticle')) {
             $pub = public_path("storage\photos\\");
             $file = $r->file('imagearticle');
-            $name = $file->getClientOriginalName();            
+            $name = $file->getClientOriginalName();
             //Image::make($file)->save($pub.$name);
             $article->imagearticle = $name;
         }
         $article->save();
-        
-        session()->flash("success","Article a ete bien enregistré !!");
+
+        session()->flash("success", "Article a ete bien enregistré !!");
 
         return redirect('articles');
     }
 
-    public function edit($id){
-        $categories = Categorie::all(); 
+    public function edit($id)
+    {
+        $categories = Categorie::all();
         $article = Article::find($id);
 
-        return view('pages.article.edit',['categories'=>$categories,'article'=>$article]);
+        return view('pages.article.edit', ['categories' => $categories, 'article' => $article]);
     }
 
-    public function update(articleRequest $r,$id){
-        
+    public function update(articleRequest $r, $id)
+    {
+
         $article = Article::find($id);
         $article->nomarticle = $r->input('nomarticle');
         $article->descriptionarticle = $r->input('descriptionarticle');
         $article->prixarticle = $r->input('prixarticle');
         $article->categorie_id = $r->categories;
 
-        if($r->hasFile('imagearticle')){
+        if ($r->hasFile('imagearticle')) {
             //si l'image est supprimeé il returne true!
-            $file_old = public_path("storage\photos\\".$article->imagearticle);
-            if(file_exists($file_old))
-            {
+            $file_old = public_path("storage\photos\\" . $article->imagearticle);
+            if (file_exists($file_old)) {
                 unlink($file_old);
             }
 
             $pub = public_path("storage\photos\\");
             $file = $r->file('imagearticle');
-            $name = $file->getClientOriginalName();            
+            $name = $file->getClientOriginalName();
             //Image::make($file)->save($pub.$name);
             $article->imagearticle = $name;
         }
         $article->save();
         return redirect('articles');
     }
-    
-    public function destroy($id){
+
+    public function destroy($id)
+    {
         $article = Article::find($id);
 
         $article->delete();
