@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommandeController;
@@ -19,3 +20,5 @@ Route::resource('lignecommande', LigneCommandeController::class);
 
 Route::get( '/login' , [ LoginController::class , 'index' ]);
 Route::post( '/login' , [ LoginController::class , 'LogIn' ]);
+
+Route::get('/dashboardA',[AdminDashboard::class ,'index']);
