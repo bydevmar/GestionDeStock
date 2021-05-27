@@ -1,10 +1,9 @@
-@extends('layouts.master')
-
-@section('content')
+@extends('pages.adminUser.index')
+@section('maindashboard')
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-6  ">
-                <h1 class="h1 pb-4">Ajouter un Client</h1>
+                <h2 class="h2 pb-4">Ajouter un Client</h2>
 
                 <form method="POST" action="{{ url('/admin/client') }}" enctype="multipart/form-data" class="form mt-4">
                     {{ csrf_field() }}
@@ -17,8 +16,8 @@
 
                     <div class="form-group ">
                         <label for="prenomclient" >Prenom :</label>
-                        <textarea name="prenomclient" id="prenomclient"
-                            class="form-control ">{{ old('prenomclient') }}</textarea>
+                        <input type="text" id="prenomclient" name="prenomclient" class="form-control"
+                            value="{{ old('prenomclient') }}">
                     </div>
 
                     <div class="form-group ">
@@ -51,18 +50,18 @@
 
                     <div class="form-group">
                         <label for="password" >Mot de passe :</label>
-                        <input type="text" name="password" id="password" class="form-control "
+                        <input type="password" name="password" id="password" class="form-control "
                             value="{{ old('password') }}">
                     </div>
 
                     <div class="form-group">
                         <label for="confirmpassword" >Confirmation :</label>
-                        <input type="text" name="confirmpassword" id="confirmpassword" class="form-control "
+                        <input type="password" name="confirmpassword" id="confirmpassword" class="form-control "
                             value="{{ old('confirmpassword') }}">
                     </div>
 
                     <div class="form-group justify-content-center">
-                        <input type="submit" class="btn btn-success form-control" value="Ajouter">
+                        <input type="submit" class="btn btn-success form-control" value="Modifier">
                     </div>
 
                 </form>

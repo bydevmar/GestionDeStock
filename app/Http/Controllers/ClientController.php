@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use App\Models\User;
 use App\Models\Ville;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,16 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
 
     public function index()
     {
         $clients = DB::table("clients")
             ->join("villes", "clients.ville_id", "=", "villes.id")
-            ->select('clients.id','clients.nomclient','clients.prenomclient','villes.nomville','clients.adresseclient','clients.created_at')
+            ->select('clients.id', 'clients.nomclient', 'clients.prenomclient', 'villes.nomville', 'clients.adresseclient', 'clients.created_at')
             ->get();
 
         return view('pages.adminUser.client.index', ['clients' => $clients]);
@@ -29,14 +24,14 @@ class ClientController extends Controller
     public function create()
     {
         $villes = Ville::all();
-        return view('pages.adminUser.client.create',["villes"=>$villes]);
+        return view('pages.adminUser.client.create', ["villes" => $villes]);
     }
 
     public function store(Request $r)
     {
         $client = Client::where('emailclient', '=', $r->emailclient)->first();
-        if(!$client){
-            if($r->input('password') == $r->input('confirmpassword')){
+        if (!$client) {
+            if ($r->input('password') == $r->input('confirmpassword')) {
                 $client = new Client();
                 $client->nomclient = $r->input('nomclient');
                 $client->prenomclient = $r->input('prenomclient');
@@ -49,17 +44,40 @@ class ClientController extends Controller
                 return redirect("/admin/client");
             }
             return redirect('/admin/client/create');
-        }else{
+        } else {
             return redirect('/admin/client/create');
         }
     }
 
     public function edit($id)
     {
+        $client = Client::find($id);
+        $villes = Ville::all();
+        if(!$client){
+            return redirect('/admin/client');
+        }
+        return view("pages.adminUser.client.edit", ['client' => $client, 'villes' => $villes,'']);
     }
 
     public function update(Request $r, $id)
     {
+        $client = Client::where('id', '=', $id)->first();
+        if ($client) {
+                $client->nomclient = $r->input('nomclient');
+                $client->prenomclient = $r->input('prenomclient');
+                $client->ville_id = $r->villes;
+                $client->telephoneclient = $r->input('telephoneclient');
+                $client->adresseclient = $r->input('adresseclient');
+                if($r->input('password') != ""){
+                    if(!Hash::check($r->password,$client->password)){
+                        $client->password = $r -> input('password');
+                    }
+                }                
+                $client->save();
+                return redirect("/admin/client");
+        } else {
+            return redirect("/admin/client");
+        }
     }
 
     public function destroy($id)

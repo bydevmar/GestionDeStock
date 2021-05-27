@@ -65,7 +65,6 @@ class ArticleController extends Controller
 
     public function update(articleRequest $r, $id)
     {
-
         $article = Article::find($id);
         $article->nomarticle = $r->input('nomarticle');
         $article->descriptionarticle = $r->input('descriptionarticle');
