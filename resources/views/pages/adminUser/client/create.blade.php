@@ -15,14 +15,14 @@
                             value="{{ old('nomclient') }}">
                     </div>
 
-                    <div class="form-group @if ($errors->get('prenomclient')) has-error @endif">
+                    <div class="form-group ">
                         <label for="prenomclient" >Prenom :</label>
                         <textarea name="prenomclient" id="prenomclient"
                             class="form-control ">{{ old('prenomclient') }}</textarea>
                     </div>
 
                     <div class="form-group ">
-                        <label for="nomville" >Ville :</label><br>
+                        <label for="villes" >Ville :</label><br>
                         <select class="form-select mb-3" aria-label="villes" name="villes">
                             <option selected value="">Selectionner ville</option>
                             @foreach ($villes as $ville)
@@ -31,31 +31,31 @@
                         </select>
                     </div>
 
-                    <div class="form-group @if ($errors->get('telephoneclient')) has-error @endif">
+                    <div class="form-group">
                         <label for="telephoneclient" >Telephone :</label>
                         <input type="text" name="telephoneclient" id="telephoneclient" class="form-control "
                             value="{{ old('telephoneclient') }}">
                     </div>
 
-                    <div class="form-group @if ($errors->get('adresseclient')) has-error @endif">
+                    <div class="form-group ">
                         <label for="adresseclient" >Adresse :</label>
                         <input type="text" name="adresseclient" id="adresseclient" class="form-control "
                             value="{{ old('adresseclient') }}">
                     </div>
 
-                    <div class="form-group @if ($errors->get('emailclient')) has-error @endif">
+                    <div class="form-group">
                         <label for="emailclient" >Email :</label>
                         <input type="text" name="emailclient" id="emailclient" class="form-control "
                             value="{{ old('emailclient') }}">
                     </div>
 
-                    <div class="form-group @if ($errors->get('password')) has-error @endif">
+                    <div class="form-group">
                         <label for="password" >Mot de passe :</label>
                         <input type="text" name="password" id="password" class="form-control "
                             value="{{ old('password') }}">
                     </div>
 
-                    <div class="form-group @if ($errors->get('confirmpassword')) has-error @endif">
+                    <div class="form-group">
                         <label for="confirmpassword" >Confirmation :</label>
                         <input type="text" name="confirmpassword" id="confirmpassword" class="form-control "
                             value="{{ old('confirmpassword') }}">

@@ -3,6 +3,7 @@
     <div class="container">
         <div class="row justify-content-center pt-4">
             <div class="col-md-10">
+                <a href="{{url('admin/client/create')}}"  class="btn btn-primary btn-lg" value='sala'>Ajouter un Client</a>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
