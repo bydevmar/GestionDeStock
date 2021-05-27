@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Ville;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +26,8 @@ class ClientController extends Controller
 
     public function create()
     {
+        $villes = Ville::all();
+        return view('pages.adminUser.client.create',["villes"=>$villes]);
     }
 
     public function store(Request $r)
