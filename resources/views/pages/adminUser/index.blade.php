@@ -14,32 +14,32 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item {{ (request()->is('admin/client')) ? 'active' : '' }}">
-                            <a class="nav-link" href="/admin/client">
+                        <li class="nav-item {{ (request()->is('admin/clients')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/clients">
                                 <i class="material-icons">person</i>
                                 <p>Clients</p>
                             </a>
                         </li>
-                        <li class="nav-item a" id="dashboardli">
-                            <a class="nav-link" href="/admin/dashboard">
+                        <li class="nav-item" >
+                            <a class="nav-link" href="/admin/articles">
                                 <i class="material-icons">content_paste</i>
                                 <p>Articles</p>
                             </a>
                         </li>
-                        <li class="nav-item a" id="dashboardli">
-                            <a class="nav-link" href="/admin/client">
+                        <li class="nav-item" >
+                            <a class="nav-link" href="/admin/commandes">
                                 <i class="material-icons">library_books</i>
                                 <p>Commandes</p>
                             </a>
                         </li>
-                        <li class="nav-item a" id="lignecommandeli">
-                            <a class="nav-link" href="/admin/client">
+                        <li class="nav-item" >
+                            <a class="nav-link" href="/admin/lignecommandes">
                                 <i class="material-icons">bubble_chart</i>
                                 <p>Ligne de Commandes</p>
                             </a>
                         </li>
 
-                        <li class="nav-item active-pro a" id="upgradeli">
+                        <li class="nav-item active-pro a">
                             <a class="nav-link" href="/">
                                 <i class="material-icons">unarchive</i>
                                 <p>Upgrade to PRO</p>
@@ -128,7 +128,7 @@
                                 document.write(new Date().getFullYear())
 
                             </script>, made with <i class="material-icons">favorite</i> by
-                            <a href="https://github.com/DevLop99" target="_blank">DEVLOPER99</a> for a better web.
+                            <a href="https://github.com/DevLop99" target="_blank">DEVLOPER99</a>
                         </div>
                     </div>
                 </footer>

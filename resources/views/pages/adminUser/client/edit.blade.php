@@ -5,7 +5,7 @@
             <div class="col-md-6  ">
                 <h2 class="h2 pb-4">Modifier un Client</h2>
 
-                <form method="POST" action="{{url('admin/client/'.$client->id)}}" enctype="multipart/form-data" class="form">
+                <form method="POST" action="{{url('admin/clients/'.$client->id)}}" enctype="multipart/form-data" class="form">
                     @csrf
                     {{ method_field('PUT') }}
 
@@ -55,6 +55,12 @@
                         <label for="password" >Mot de passe :</label>
                         <input type="password" name="password" id="password" class="form-control "
                         value="{{ old('password') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Confirmation" >Confirmation :</label>
+                        <input type="Confirmation" name="Confirmation" id="Confirmation" class="form-control "
+                        value="{{ old('Confirmation') }}">
                     </div>
 
                     <div class="form-group justify-content-center">

@@ -52,7 +52,7 @@ class ArticleController extends Controller
 
         session()->flash("success", "Article a ete bien enregistré !!");
 
-        return redirect('articles');
+        return redirect('/admin/articles');
     }
 
     public function edit($id)
@@ -85,7 +85,7 @@ class ArticleController extends Controller
             $article->imagearticle = $name;
         }
         $article->save();
-        return redirect('articles');
+        return redirect('/admin/articles');
     }
 
     public function destroy($id)
@@ -93,6 +93,6 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         $article->delete();
-        return redirect("articles");
+        return redirect("/admin/articles");
     }
 }

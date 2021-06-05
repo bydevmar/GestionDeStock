@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center pt-4">
             <div class="col-md-10">
-                <a href="{{url('admin/client/create')}}"  class="btn btn-primary btn-lg" value='sala'>Ajouter un Client</a>
+                <a href="{{url('admin/clients/create')}}"  class="btn btn-primary btn-lg" >Ajouter un Client</a>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -24,13 +24,13 @@
                             <td scope="row">{{$client->nomville}}</td>
                             <td scope="row">{{$client->created_at}}</td>
                             <td scope="row">
-                                <a href="{{url('admin/client/details/'.$client->id)}}" class="btn btn-success">
+                                <a href="{{url('admin/clients/details/'.$client->id)}}" class="btn btn-success">
                                     Details
                                 </a>
-                                <a href="{{url('admin/client/'.$client->id.'/edit')}}" class="btn btn-warning">
+                                <a href="{{url('admin/clients/'.$client->id.'/edit')}}" class="btn btn-warning">
                                     Modifier
                                 </a>
-                                <form class="d-inline" action="{{url('admin/client/'.$client->id)}}" method="post">
+                                <form class="d-inline" action="{{url('admin/clients/'.$client->id)}}" method="post">
                                     @csrf
                                     {{ method_field('DELETE') }}
                                     <button type="submit" class="btn btn-danger">Supprimer</button>

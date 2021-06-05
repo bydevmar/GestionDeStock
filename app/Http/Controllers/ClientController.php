@@ -41,11 +41,11 @@ class ClientController extends Controller
                 $client->emailclient = $r->input('emailclient');
                 $client->password = Hash::make($r->input('password'));
                 $client->save();
-                return redirect("/admin/client");
+                return redirect("/admin/clients");
             }
-            return redirect('/admin/client/create');
+            return redirect('/admin/clients/create');
         } else {
-            return redirect('/admin/client/create');
+            return redirect('/admin/clients/create');
         }
     }
 
@@ -54,7 +54,7 @@ class ClientController extends Controller
         $client = Client::find($id);
         $villes = Ville::all();
         if(!$client){
-            return redirect('/admin/client');
+            return redirect('/admin/clients');
         }
         return view("pages.adminUser.client.edit", ['client' => $client, 'villes' => $villes,'']);
     }
@@ -74,13 +74,18 @@ class ClientController extends Controller
                     }
                 }                
                 $client->save();
-                return redirect("/admin/client");
+                return redirect("/admin/clients");
         } else {
-            return redirect("/admin/client");
+            return redirect("/admin/clients");
         }
     }
 
+
     public function destroy($id)
     {
+        $client = Client::find($id);
+
+        $client->delete();
+        return redirect("/admin/clients");
     }
 }

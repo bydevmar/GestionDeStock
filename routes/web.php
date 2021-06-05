@@ -14,11 +14,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/admin/client', ClientController::class);
+Route::resource('/admin/clients', ClientController::class);
 
-Route::resource('articles', ArticleController::class);
-Route::resource('commande', CommandeController::class);
-Route::resource('lignecommande', LigneCommandeController::class);
+Route::resource('/admin/articles', ArticleController::class);
+Route::resource('admin/commande', CommandeController::class);
+Route::resource('admin/lignecommande', LigneCommandeController::class);
 
 Route::get( '/login' , [ LoginController::class , 'index' ]);
 Route::post( '/login' , [ LoginController::class , 'LogIn' ]);

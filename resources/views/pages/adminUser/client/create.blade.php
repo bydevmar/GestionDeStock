@@ -5,7 +5,7 @@
             <div class="col-md-6  ">
                 <h2 class="h2 pb-4">Ajouter un Client</h2>
 
-                <form method="POST" action="{{ url('/admin/client') }}" enctype="multipart/form-data" class="form mt-4">
+                <form method="POST" action="{{ url('/admin/clients') }}" enctype="multipart/form-data" class="form mt-4">
                     {{ csrf_field() }}
 
                     <div class="form-group ">
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group justify-content-center">
-                        <input type="submit" class="btn btn-success form-control" value="Modifier">
+                        <input type="submit" class="btn btn-success form-control" value="Ajouter">
                     </div>
 
                 </form>
