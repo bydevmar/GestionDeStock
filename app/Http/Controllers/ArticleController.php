@@ -25,13 +25,13 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('pages.article.index', ['articles' => $articles]);
+        return view('pages.admin.article.index', ['articles' => $articles]);
     }
 
     public function create()
     {
         $categories = Categorie::all();
-        return view('pages.article.create', ['categories' => $categories]);
+        return view('pages.admin.article.create', ['categories' => $categories]);
     }
 
     public function store(articleRequest $r)
@@ -60,7 +60,7 @@ class ArticleController extends Controller
         $categories = Categorie::all();
         $article = Article::find($id);
 
-        return view('pages.article.edit', ['categories' => $categories, 'article' => $article]);
+        return view('pages.admin.article.edit', ['categories' => $categories, 'article' => $article]);
     }
 
     public function update(articleRequest $r, $id)

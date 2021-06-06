@@ -1,4 +1,4 @@
-@extends('pages.adminUser.index')
+@extends('pages.admin.index')
 @section('maindashboard')
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -9,19 +9,19 @@
                     {{ csrf_field() }}
 
                     <div class="form-group ">
-                        <label for="nomclient" >Nom :</label>
+                        <label for="nomclient">Nom :</label>
                         <input type="text" id="nomclient" name="nomclient" class="form-control "
                             value="{{ old('nomclient') }}">
                     </div>
 
                     <div class="form-group ">
-                        <label for="prenomclient" >Prenom :</label>
+                        <label for="prenomclient">Prenom :</label>
                         <input type="text" id="prenomclient" name="prenomclient" class="form-control"
                             value="{{ old('prenomclient') }}">
                     </div>
 
                     <div class="form-group ">
-                        <label for="villes" >Ville :</label><br>
+                        <label for="villes">Ville :</label><br>
                         <select class="form-select mb-3" aria-label="villes" name="villes">
                             <option selected value="">Selectionner ville</option>
                             @foreach ($villes as $ville)
@@ -31,31 +31,31 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="telephoneclient" >Telephone :</label>
+                        <label for="telephoneclient">Telephone :</label>
                         <input type="text" name="telephoneclient" id="telephoneclient" class="form-control "
                             value="{{ old('telephoneclient') }}">
                     </div>
 
                     <div class="form-group ">
-                        <label for="adresseclient" >Adresse :</label>
+                        <label for="adresseclient">Adresse :</label>
                         <input type="text" name="adresseclient" id="adresseclient" class="form-control "
                             value="{{ old('adresseclient') }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="emailclient" >Email :</label>
+                        <label for="emailclient">Email :</label>
                         <input type="text" name="emailclient" id="emailclient" class="form-control "
                             value="{{ old('emailclient') }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="password" >Mot de passe :</label>
+                        <label for="password">Mot de passe :</label>
                         <input type="password" name="password" id="password" class="form-control "
                             value="{{ old('password') }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="confirmpassword" >Confirmation :</label>
+                        <label for="confirmpassword">Confirmation :</label>
                         <input type="password" name="confirmpassword" id="confirmpassword" class="form-control "
                             value="{{ old('confirmpassword') }}">
                     </div>

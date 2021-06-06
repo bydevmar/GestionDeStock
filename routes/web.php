@@ -1,6 +1,4 @@
 <?php
-
-use App\Http\Controllers\AdminClients;
 use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ClientController;

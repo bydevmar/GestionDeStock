@@ -18,13 +18,13 @@ class ClientController extends Controller
             ->select('clients.id', 'clients.nomclient', 'clients.prenomclient', 'villes.nomville', 'clients.adresseclient', 'clients.created_at')
             ->get();
 
-        return view('pages.adminUser.client.index', ['clients' => $clients]);
+        return view('pages.admin.client.index', ['clients' => $clients]);
     }
 
     public function create()
     {
         $villes = Ville::all();
-        return view('pages.adminUser.client.create', ["villes" => $villes]);
+        return view('pages.admin.client.create', ["villes" => $villes]);
     }
 
     public function store(Request $r)
@@ -56,13 +56,14 @@ class ClientController extends Controller
         if(!$client){
             return redirect('/admin/clients');
         }
-        return view("pages.adminUser.client.edit", ['client' => $client, 'villes' => $villes,'']);
+        return view("pages.admin.client.edit", ['client' => $client, 'villes' => $villes,'']);
     }
 
     public function update(Request $r, $id)
     {
         $client = Client::where('id', '=', $id)->first();
         if ($client) {
+            if($r->input('password') == $r->input('confirmpassword'))
                 $client->nomclient = $r->input('nomclient');
                 $client->prenomclient = $r->input('prenomclient');
                 $client->ville_id = $r->villes;
@@ -84,8 +85,13 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::find($id);
-
-        $client->delete();
-        return redirect("/admin/clients");
+        if($client){
+            $client->delete();
+            return redirect("/admin/clients");
+        }
+        else{
+            return dd("ce client n'exist pas!!");
+        }
+        
     }
 }
