@@ -72,7 +72,7 @@
                         <select class="form-select mb-3" aria-label="Categorie" name="categories">
                             <option selected value="">Selectionner Categorie</option>
                             @foreach ($categories as $categorie)
-                                @if ($categorie->id == $article->categorie_id)
+                                @if ($categorie->id == $client->client_id)
                                     <option value="{{ $categorie->id }}" selected>{{ $categorie->nomcategorie }}
                                     </option>
                                 @else

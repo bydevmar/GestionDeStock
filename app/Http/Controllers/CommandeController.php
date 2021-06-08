@@ -15,7 +15,7 @@ class CommandeController extends Controller
     public function index(){
         $commandes = DB::table("commandes")
             ->join("clients", "clients.id", "=", "commandes.client_id")
-            ->select('commandes.id', 'clients.nomclient', 'clients.prenomclient', 'commandes.datecommande', 'commandes.etatcommande')
+            ->select('commandes.id AS commande_id',"clients.id AS client_id", 'clients.nomclient', 'clients.prenomclient', 'commandes.datecommande', 'commandes.etatcommande')
             ->get();
         //dd($commandes);
         return view('pages.admin.commande.index', ['commandes' => $commandes]);
@@ -37,9 +37,24 @@ class CommandeController extends Controller
     }
 
     public function edit($id){
+        $commande = Commande::find($id);
+        $clients = Client::all();
+        if(!$commande){
+            return redirect('/admin/commandes');
+        }
+        return view("pages.admin.commande.edit", ['clients' => $clients, 'commande' => $commande]);
     }
 
-    public function update(Request $r,$id){}
+    public function update(Request $r,$id){
+        $commande = Commande::find($id);
+        if($commande){
+            $commande->datecommande = $r->input('datecommande');
+            $commande->client_id = $r->input('client');
+            $commande->etatcommande = $r->input('etatcommande');
+            $commande->save();
+            return redirect("/admin/commandes");
+        }
+    }
 
     public function destroy($id){}
 }

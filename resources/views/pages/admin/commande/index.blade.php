@@ -17,18 +17,18 @@
                     <tbody>
                         @foreach ($commandes as $commande)
                             <tr class="justify-content-center">
-                                <td scope="row">{{ $commande->id }}</td>
+                                <td scope="row">{{ $commande->commande_id }}</td>
                                 <td scope="row">{{ $commande->nomclient." ".$commande->prenomclient }}</td>
                                 <td scope="row">{{ $commande->datecommande }}</td>
                                 <td scope="row">{{ $commande->etatcommande }}</td>
                                 <td scope="row">
-                                    <a href="{{ url('admin/commandes/details/' . $commande->id) }}" class="form-control btn btn-success">
+                                    <a href="{{ url('admin/commandes/details/' . $commande->commande_id) }}" class="form-control btn btn-success">
                                         Details
                                     </a>
-                                    <a href="{{ url('admin/commandes/' . $commande->id . '/edit') }}" class="form-control btn btn-warning">
+                                    <a href="{{ url('admin/commandes/' . $commande->commande_id . '/edit') }}" class="form-control btn btn-warning">
                                         Modifier
                                     </a>
-                                    <form action="{{ url('admin/commandes/' . $commande->id . '') }}" method="post">
+                                    <form action="{{ url('admin/commandes/' . $commande->commande_id . '') }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
 
