@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center pt-4">
             <div class="col-md-10">
-                <a href="{{ url('admin/commandes/create') }}" class="btn btn-primary">Ajouter une Commande</a>
+                <a href="{{ url('admin/lignecommandes/create') }}" class="btn btn-primary">Ajouter une Commande</a>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
