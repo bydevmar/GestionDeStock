@@ -56,5 +56,14 @@ class CommandeController extends Controller
         }
     }
 
-    public function destroy($id){}
+    public function destroy($id){
+        $commande = Commande::find($id);
+        if($commande){
+            $commande->delete();
+            return redirect("/admin/commandes");
+        }
+        else{
+            return dd("cette commande n'exist pas!!");
+        }
+    }
 }

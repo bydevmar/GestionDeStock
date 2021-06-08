@@ -15,11 +15,13 @@ Route::get('/', function () {
 Route::resource('/admin/clients', ClientController::class);
 
 Route::resource('/admin/articles', ArticleController::class);
+
 Route::resource('admin/commandes', CommandeController::class);
-Route::resource('admin/lignecommande', LigneCommandeController::class);
+
+Route::resource('admin/lignecommandes', LigneCommandeController::class);
+Route::get('admin/lignecommandes/{commande_id}/{article_id}/edit', [LigneCommandeController::class,"edit"]);
 
 Route::get( '/login' , [ LoginController::class , 'index' ]);
 Route::post( '/login' , [ LoginController::class , 'LogIn' ]);
 
 Route::get('/admin/dashboard',[AdminDashboard::class ,'index']);
-

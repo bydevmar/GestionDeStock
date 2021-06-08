@@ -7,25 +7,27 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Commande ID</th>
+                            <th scope="col">Article</th>
                             <th scope="col">Client</th>
-                            <th scope="col">Date Commande</th>
-                            <th scope="col">Etat Commande</th>
+                            <th scope="col">Quantite</th>
+                            <th scope="col">Etat de commande</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($commandes as $commande)
+                        @foreach ($lignecommandes as $lc)
                             <tr class="justify-content-center">
-                                <td scope="row">{{ $commande->commande_id }}</td>
-                                <td scope="row">{{ $commande->nomclient." ".$commande->prenomclient }}</td>
-                                <td scope="row">{{ $commande->datecommande }}</td>
-                                <td scope="row">{{ $commande->etatcommande }}</td>
+                                <td scope="row">{{ $lc->commande_id }}</td>
+                                <td scope="row">{{ $lc->nomarticle }}</td>
+                                <td scope="row">{{ $lc->nomclient." ".$lc->prenomclient }}</td>
+                                <td scope="row">{{ $lc->quantite }}</td>
+                                <td scope="row">{{ $lc->etatcommande }}</td>
                                 <td scope="row">
-                                    <a href="{{ url('admin/commandes/' . $commande->commande_id . '/edit') }}" class="form-control btn btn-warning">
+                                    <a href="{{ url('admin/lignecommandes/' . $lc->commande_id."/". $lc->client_id . '/edit') }}" class="form-control btn btn-warning">
                                         Modifier
                                     </a>
-                                    <form action="{{ url('admin/commandes/' . $commande->commande_id . '') }}" method="post">
+                                    <form action="{{ url('admin/lignecommandes/' . $lc->commande_id . '') }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
 
