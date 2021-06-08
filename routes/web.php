@@ -15,7 +15,7 @@ Route::get('/', function () {
 Route::resource('/admin/clients', ClientController::class);
 
 Route::resource('/admin/articles', ArticleController::class);
-Route::resource('admin/commande', CommandeController::class);
+Route::resource('admin/commandes', CommandeController::class);
 Route::resource('admin/lignecommande', LigneCommandeController::class);
 
 Route::get( '/login' , [ LoginController::class , 'index' ]);

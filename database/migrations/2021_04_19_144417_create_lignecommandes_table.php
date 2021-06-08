@@ -14,17 +14,17 @@ class CreateLignecommandesTable extends Migration
     public function up()
     {
         Schema::create('lignecommandes', function (Blueprint $table) {
-            $table->increments('id');
-            
             $table->integer('commande_id')->unsigned();
-            $table->foreign('commande_id')->references('id')->on('commandes');
+            $table->integer('article_id')->unsigned();
 
-            $table->integer('client_id')->unsigned();
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->primary(['commande_id', 'article_id']);
+            $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
 
-            $table->integer("quantite")->unsigned();
+            $table->integer("quantite");
 
             $table -> dateTime('deleted_at')->nullable()->default(null);
+
             $table->timestamps();
         });
     }

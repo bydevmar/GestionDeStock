@@ -1,12 +1,10 @@
 @extends('layouts.master')
-
 @section('content')
-
-    <div class="container mt-2">
-        <div class="row">
-            <div class="col-md-12 ">
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6  ">
                 <h1>Creation d'un Article</h1>
-                <form method="POST" action="{{ url('admin/articles') }}" enctype="multipart/form-data">
+                <form class="form" method="POST" action="{{ url('admin/articles') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group  @if ($errors->get('nomarticle')) has-error @endif">
                         <label for="nomarticle" class="mb-1">Nom :</label>

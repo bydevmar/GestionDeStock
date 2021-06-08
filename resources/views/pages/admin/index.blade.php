@@ -20,19 +20,19 @@
                                 <p>Clients</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('admin/articles') ? 'active' : '' }}" href="/admin/articles">
+                        <li class="nav-item {{ request()->is('admin/articles') ? 'active' : '' }}">
+                            <a class="nav-link "  href="/admin/articles">
                                 <i class="material-icons">content_paste</i>
                                 <p>Articles</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->is('admin/commandes') ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/commandes">
                                 <i class="material-icons">library_books</i>
                                 <p>Commandes</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->is('admin/lignecommandes') ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/lignecommandes">
                                 <i class="material-icons">bubble_chart</i>
                                 <p>Ligne de Commandes</p>
