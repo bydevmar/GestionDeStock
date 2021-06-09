@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLignecommandesTable extends Migration
+class CreateCommandesArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateLignecommandesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lignecommandes', function (Blueprint $table) {
+        Schema::create('commande_article', function (Blueprint $table) {
+            
             $table->integer('commande_id')->unsigned();
             $table->integer('article_id')->unsigned();
 
             $table->primary(['commande_id', 'article_id']);
+            
             $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('cascade');
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
 
@@ -34,8 +36,9 @@ class CreateLignecommandesTable extends Migration
      *
      * @return void
      */
+    
     public function down()
     {
-        Schema::dropIfExists('lignecommandes');
+        Schema::dropIfExists('commande_article');
     }
 }

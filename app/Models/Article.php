@@ -13,5 +13,9 @@ class Article extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
+
+    public function commandes(){
+        return $this->belongsToMany(Commande::class,'commande_article');
+    }
     
 }

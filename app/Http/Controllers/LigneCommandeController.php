@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Commande;
-use App\Models\LigneCommande;
+use App\Models\CommandeArticle;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,7 @@ class LigneCommandeController extends Controller
 
     public function index()
     {
-        $lignecommandes = DB::table("lignecommandes AS lc")
+        $lignecommandes = DB::table("commande_article AS lc")
             ->join("commandes AS cm", "cm.id", "=", "lc.commande_id")
             ->join("articles as ar", "ar.id", "=", "lc.article_id")
             ->join("clients as cl", "cm.client_id", "=", "cl.id")
@@ -48,12 +49,12 @@ class LigneCommandeController extends Controller
 
     public function store(Request $r)
     {
-        $lignecommande = DB::table('lignecommandes')
+        $lignecommande = DB::table('commande_article')
             ->where('commande_id',  $r->input('commande'))
             ->where("article_id", $r->input('article'))
             ->first();
         if (!$lignecommande) {
-            $lignecommande = new LigneCommande();
+            $lignecommande = new CommandeArticle();
             $lignecommande->commande_id = $r->input('commande');
             $lignecommande->article_id = $r->input('article');
             $lignecommande->quantite = $r->input('quantite');
@@ -65,14 +66,41 @@ class LigneCommandeController extends Controller
 
     public function edit($commande_id, $article_id)
     {
-
+        $lignecommande = DB::table('commande_article')
+            ->where('commande_id',  $commande_id)
+            ->where("article_id", $article_id)
+            ->first();
+        if ($lignecommande) {
+            $commandes = Commande::all();
+            $articles = Article::all();
+            return view('pages.admin.lignecommande.edit', ["commandes" => $commandes, "articles" => $articles, "lignecommande" => $lignecommande]);
+        }
+        return redirect('/admin/lignecommandes');
     }
 
-    public function update(Request $r, $id)
+    public function update(Request $r, $commande_id, $article_id)
     {
+        $result = 0;
+        try{
+            $result = DB::table('commande_article')
+            ->where('commande_id', $commande_id)
+            ->where('article_id', $article_id)
+            ->update([
+                'commande_id' => $r->input('commande'), 'article_id' => $r->input('article'), 'quantite' =>  $r->input('quantite')
+            ]);
+        }catch(Exception $e){
+            dd("Exception LigneCommandeController Update: ".$e);
+        }
+        
+        if($result == 1){
+            return redirect('/admin/lignecommandes');
+        }
+        
+        return redirect('/admin/lignecommandes/' . $commande_id . '/' . $article_id . '/' . 'edit');
     }
 
     public function destroy($id)
     {
+        
     }
 }

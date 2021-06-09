@@ -8,8 +8,8 @@
                     </a></div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
-                        <li class="nav-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
-                            <a class="nav-link" href="/admin/dashboard">
+                        <li class="nav-item {{ request()->is('admin') ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin">
                                 <i class="material-icons">dashboard</i>
                                 <p>Dashboard</p>
                             </a>
@@ -53,7 +53,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="/admin/dashboard">Dashboard</a>
+                            <a class="navbar-brand" href="/admin">Dashboard</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                             aria-expanded="false" aria-label="Toggle navigation">

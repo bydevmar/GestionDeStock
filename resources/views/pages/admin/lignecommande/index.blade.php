@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center pt-4">
             <div class="col-md-10">
-                <a href="{{ url('admin/lignecommandes/create') }}" class="btn btn-primary">Ajouter une Commande</a>
+                <a href="{{ url('admin/lignecommandes/create') }}" class="btn btn-primary">Ajouter une ligne de commande</a>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -24,10 +24,10 @@
                                 <td scope="row">{{ $lc->quantite }}</td>
                                 <td scope="row">{{ $lc->etatcommande }}</td>
                                 <td scope="row">
-                                    <a href="{{ url('admin/lignecommandes/' . $lc->commande_id."/". $lc->client_id . '/edit') }}" class="form-control btn btn-warning">
+                                    <a href="{{ url("admin/lignecommandes/".$lc->commande_id."/". $lc->article_id."/edit") }}" class="form-control btn btn-warning">
                                         Modifier
                                     </a>
-                                    <form action="{{ url('admin/lignecommandes/' . $lc->commande_id . '') }}" method="post">
+                                    <form action="{{ url('admin/lignecommandes/' . $lc->commande_id ) }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
 

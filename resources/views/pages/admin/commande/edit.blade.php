@@ -15,10 +15,6 @@
                         <select class="form-control mb-3" aria-label="client" name="client">
                             <option selected value="">Selectionner un Client</option>
                             @foreach ($clients as $client)
-                                <option value="{{ $client->id }}">{{ $client->nomclient . ' ' . $client->prenomclient }}
-                                </option>
-                            @endforeach
-                            @foreach ($clients as $client)
                                 @if ($client->id == $commande->client_id)
                                     <option value="{{ $client->id }}" selected>
                                         {{ $client->nomclient . ' ' . $client->prenomclient }}
