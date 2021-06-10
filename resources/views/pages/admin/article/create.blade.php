@@ -1,8 +1,8 @@
-@extends('layouts.master')
-@section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-6  ">
+@extends('pages.admin.index')
+@section('maindashboard')
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6  ">
                 <h1>Creation d'un Article</h1>
                 <form class="form" method="POST" action="{{ url('admin/articles') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -42,13 +42,13 @@
 
                     </div>
 
-                    <div class="form-group ">
+                    <div class="">
                         <label for="imagearticle" class="mb-1">Photo d'article:</label>
-                        <input type="file" name="imagearticle" id="imagearticle" class="form-control mb-4">
+                        <input type="file" name="imagearticle" id="imagearticle" class="form-control  mb-4">
                     </div>
 
                     <div class="form-group ">
-                        <select class="form-select mb-3" aria-label="Categorie" name="categories">
+                        <select class="form-control mb-3" aria-label="Categorie" name="categories">
                             <option selected value="">Selectionner Categorie</option>
                             @foreach ($categories as $categorie)
                                 <option value="{{ $categorie->id }}">{{ $categorie->nomcategorie }}</option>
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" class="form-control btn btn-primary" value="Enregistrer">
+                        <input type="submit" class="form-control btn btn-success" value="AJOUTER">
                     </div>
 
                 </form>

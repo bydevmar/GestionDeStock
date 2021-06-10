@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             $table->string('prenomclient');
 
             $table->integer('ville_id')->unsigned();
-            $table->foreign('ville_id')->references('id')->on('villes');
+            $table->foreign('ville_id')->references('id')->on('villes')->onDelete('cascade');
 
             $table->string('telephoneclient');
             $table->string('adresseclient');

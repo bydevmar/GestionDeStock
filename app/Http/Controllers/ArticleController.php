@@ -5,14 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\articleRequest;
 use App\Models\Article;
 use App\Models\Categorie;
-use Facade\FlareClient\Http\Response;
-use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-//use Intervention\Image\ImageManagerStatic as Image;
-
-
-use File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ArticleController extends Controller
 {
@@ -45,7 +38,7 @@ class ArticleController extends Controller
             $pub = public_path("storage\photos\\");
             $file = $r->file('imagearticle');
             $name = $file->getClientOriginalName();
-            //Image::make($file)->save($pub.$name);
+            Image::make($file)->save($pub.$name);
             $article->imagearticle = $name;
         }
         $article->save();

@@ -10,9 +10,9 @@
                     </div>
                 @endif
                 <a class="btn btn-success" href="{{ url('admin/articles/create') }}">Cree un article</a>
-                <div>
+                <div class="row">
                     @foreach ($articles as $article)
-                        <div class="card mt-3" style="width: 18rem;">
+                        <div class="card mt-3 mr-3" style="width: 18rem;">
                             <img src="{{ asset('storage/photos/' . $article->imagearticle) }}"
                                 class="card-img-top  w-80  h-50" alt="...">
                             <div class="card-body">

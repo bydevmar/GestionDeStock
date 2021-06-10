@@ -47,12 +47,12 @@
 
                     </div>
 
-                    <div class="form-group ">
+                    <div class="">
                         <label for="imagearticle" class="mb-1">Photo d'article:</label>
                         <img id="uploadPreview" src="{{ asset('storage/photos/' . $article->imagearticle) }}"
                             class="form-control img-thumbnail w-25  h-25" alt="Responsive image">
                         <input type="file" name="imagearticle" onchange="PreviewImage();" id="imagearticle"
-                            class="form-control mb-4" aria-valuetext="{{ $article->imagearticle }}">
+                            class="mb-4" aria-valuetext="{{ $article->imagearticle }}">
 
                         <script type="text/javascript">
                             function PreviewImage() {
@@ -63,16 +63,15 @@
                                     document.getElementById("uploadPreview").src = oFREvent.target.result;
                                 };
                             };
-
                         </script>
                     </div>
 
                     <div class="form-group ">
                         <label for="imagearticle" class="mb-1">Categorie:</label>
-                        <select class="form-select mb-3" aria-label="Categorie" name="categories">
+                        <select class="form-control mb-3" aria-label="Categorie" name="categories">
                             <option selected value="">Selectionner Categorie</option>
                             @foreach ($categories as $categorie)
-                                @if ($categorie->id == $client->client_id)
+                                @if ($categorie->id == $article->categorie_id)
                                     <option value="{{ $categorie->id }}" selected>{{ $categorie->nomcategorie }}
                                     </option>
                                 @else
@@ -81,14 +80,8 @@
                             @endforeach
                         </select>
                     </div>
-
-
-
-
-
-
                     <div class="form-group">
-                        <input type="submit" class="form-control btn btn-primary" value="Enregistrer">
+                        <input type="submit" class="form-control btn btn-danger" value="MOFIDIER">
                     </div>
 
                 </form>

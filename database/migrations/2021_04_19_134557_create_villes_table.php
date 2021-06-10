@@ -20,7 +20,7 @@ class CreateVillesTable extends Migration
             $table->integer('codepostalville');
 
             $table->integer('pays_id')->unsigned();
-            $table->foreign('pays_id')->references('id')->on('payss');
+            $table->foreign('pays_id')->references('id')->on('payss')->onDelete('cascade');
             
             $table -> dateTime('deleted_at')->nullable();
             $table->timestamps();

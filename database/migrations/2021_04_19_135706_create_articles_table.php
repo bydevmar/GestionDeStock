@@ -23,7 +23,7 @@ class CreateArticlesTable extends Migration
             $table->string('imagearticle')->nullable();
 
             $table->integer('categorie_id')->unsigned();
-            $table->foreign('categorie_id')->references('id')->on('categories');
+            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table -> dateTime('deleted_at')->nullable();
             $table->timestamps();
