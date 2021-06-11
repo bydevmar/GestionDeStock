@@ -17,7 +17,6 @@ class CommandeController extends Controller
             ->join("clients", "clients.id", "=", "commandes.client_id")
             ->select('commandes.id AS commande_id',"clients.id AS client_id", 'clients.nomclient', 'clients.prenomclient', 'commandes.datecommande', 'commandes.etatcommande')
             ->get();
-        //dd($commandes);
         return view('pages.admin.commande.index', ['commandes' => $commandes]);
     }
 
@@ -31,7 +30,7 @@ class CommandeController extends Controller
         $commande->datecommande = $r->input('datecommande');
         $commande->client_id = $r->input('client');
         $commande->etatcommande = $r->input('etatcommande');
-        
+        session()->flash("success", "Commande a été bien enregistré !!");
         $commande->save();
         return redirect("/admin/commandes");
     }
@@ -52,6 +51,7 @@ class CommandeController extends Controller
             $commande->client_id = $r->input('client');
             $commande->etatcommande = $r->input('etatcommande');
             $commande->save();
+            session()->flash("success", "Commande a été bien modifié !!");
             return redirect("/admin/commandes");
         }
     }
@@ -60,6 +60,7 @@ class CommandeController extends Controller
         $commande = Commande::find($id);
         if($commande){
             $commande->delete();
+            session()->flash("success", "Commande a été bien supprimé !!");
             return redirect("/admin/commandes");
         }
         else{

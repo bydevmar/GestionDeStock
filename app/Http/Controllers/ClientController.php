@@ -41,6 +41,7 @@ class ClientController extends Controller
                 $client->emailclient = $r->input('emailclient');
                 $client->password = Hash::make($r->input('password'));
                 $client->save();
+                session()->flash("success", "Client a été bien enregistré !!");
                 return redirect("/admin/clients");
             }
             return redirect('/admin/clients/create');
@@ -73,7 +74,8 @@ class ClientController extends Controller
                     if(!Hash::check($r->password,$client->password)){
                         $client->password = $r -> input('password');
                     }
-                }                
+                }           
+                session()->flash("success", "Client a été bien modifié !!");     
                 $client->save();
                 return redirect("/admin/clients");
         } else {
@@ -87,11 +89,9 @@ class ClientController extends Controller
         $client = Client::find($id);
         if($client){
             $client->delete();
+            session()->flash("success", "Client a été bien supprimé !!");
             return redirect("/admin/clients");
         }
-        else{
-            return dd("ce client n'exist pas!!");
-        }
-        
+        return dd("ce client n'exist pas!!");
     }
 }

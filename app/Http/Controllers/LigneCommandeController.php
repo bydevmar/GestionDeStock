@@ -58,6 +58,7 @@ class LigneCommandeController extends Controller
             $lignecommande->commande_id = $r->input('commande');
             $lignecommande->article_id = $r->input('article');
             $lignecommande->quantite = $r->input('quantite');
+            session()->flash("success", "Ligne de Commande a été bien enregistré !!");
             $lignecommande->save();
             return redirect('/admin/lignecommandes');
         }
@@ -88,6 +89,7 @@ class LigneCommandeController extends Controller
             ->update([
                 'commande_id' => $r->input('commande'), 'article_id' => $r->input('article'), 'quantite' =>  $r->input('quantite')
             ]);
+            session()->flash("success", "Ligne de Commande été bien modifié !!");
         }catch(Exception $e){
             dd("Exception LigneCommandeController Update: ".$e);
         }
@@ -99,6 +101,21 @@ class LigneCommandeController extends Controller
         return redirect('/admin/lignecommandes/' . $commande_id . '/' . $article_id . '/' . 'edit');
     }
 
-    public function destroy($id)
-    {}
+    public function destroy($commande_id, $article_id)
+    {
+        $result = 0;
+        try{
+            $result = DB::table('commande_article')
+            ->where('commande_id', $commande_id)
+            ->where('article_id', $article_id)
+            ->delete();
+        }catch(Exception $e){
+            dd("Exception LigneCommandeController Update: ".$e);
+        }
+        
+        if($result == 1){
+            session()->flash("success", "Ligne de Commande a été bien supprimé !!");
+            return redirect('/admin/lignecommandes');
+        }
+    }
 }

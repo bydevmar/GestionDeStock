@@ -3,7 +3,14 @@
     <div class="container">
         <div class="row justify-content-center pt-4">
             <div class="col-md-10">
-                <a href="{{ url('admin/lignecommandes/create') }}" class="btn btn-primary">Ajouter une ligne de commande</a>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+                <a href="{{ url('admin/lignecommandes/create') }}" class="btn btn-primary">Ajouter une ligne de
+                    commande</a>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -20,17 +27,19 @@
                             <tr class="justify-content-center">
                                 <td scope="row">{{ $lc->commande_id }}</td>
                                 <td scope="row">{{ $lc->nomarticle }}</td>
-                                <td scope="row">{{ $lc->nomclient." ".$lc->prenomclient }}</td>
+                                <td scope="row">{{ $lc->nomclient . ' ' . $lc->prenomclient }}</td>
                                 <td scope="row">{{ $lc->quantite }}</td>
                                 <td scope="row">{{ $lc->etatcommande }}</td>
                                 <td scope="row">
-                                    <a href="{{ url("admin/lignecommandes/".$lc->commande_id."/". $lc->article_id."/edit") }}" class="form-control btn btn-warning">
+                                    <a href="{{ url('admin/lignecommandes/' . $lc->commande_id . '/' . $lc->article_id . '/edit') }}"
+                                        class="form-control btn btn-warning">
                                         Modifier
                                     </a>
-                                    <form action="{{ url('admin/lignecommandes/' . $lc->commande_id ) }}" method="post">
+                                    <form
+                                        action="{{ url('admin/lignecommandes/' . $lc->commande_id . '/' . $lc->article_id) }}"
+                                        method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
-
                                         <button type="submit" class="form-control btn btn-danger">Supprimer</button>
                                     </form>
                                 </td>

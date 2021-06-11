@@ -4,9 +4,10 @@
         <h1>Liste des articles</h1>
         <div class="row">
             <div class="col-md-12">
-                @if (session()->has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session()->get('success') }}
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
                     </div>
                 @endif
                 <a class="btn btn-success" href="{{ url('admin/articles/create') }}">Cree un article</a>

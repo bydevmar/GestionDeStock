@@ -3,6 +3,12 @@
     <div class="container">
         <div class="row justify-content-center pt-4">
             <div class="col-md-10">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
                 <a href="{{ url('admin/commandes/create') }}" class="btn btn-primary">Ajouter une Commande</a>
                 <table class="table">
                     <thead class="thead-dark">

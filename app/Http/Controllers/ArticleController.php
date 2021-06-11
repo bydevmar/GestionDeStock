@@ -46,7 +46,7 @@ class ArticleController extends Controller
         }
         $article->save();
 
-        session()->flash("success", "Article a ete bien enregistré !!");
+        session()->flash("success", "Article a été bien enregistré !!");
 
         return redirect('/admin/articles');
     }
@@ -81,6 +81,7 @@ class ArticleController extends Controller
                 }
             }
             $article->save();
+            session()->flash("success", "Article a été bien modifié !!");
             return redirect('/admin/articles');
         }
     }
@@ -91,6 +92,7 @@ class ArticleController extends Controller
         if ($article) {
             $article->delete();
             Storage::delete('/public/photos/' . $article->imagearticle);
+            session()->flash("success", "Article a été bien supprimé !!");
         }
         return redirect("/admin/articles");
     }

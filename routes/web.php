@@ -21,6 +21,7 @@ Route::resource('admin/commandes', CommandeController::class);
 Route::resource('admin/lignecommandes', LigneCommandeController::class);
 Route::get('admin/lignecommandes/{commande_id}/{article_id}/edit', [LigneCommandeController::class,"edit"]);
 Route::put('admin/lignecommandes/{commande_id}/{article_id}', [LigneCommandeController::class,"update"]);
+Route::delete('admin/lignecommandes/{commande_id}/{article_id}', [LigneCommandeController::class,"destroy"]);
 
 Route::get( '/login' , [ LoginController::class , 'index' ]);
 Route::post( '/login' , [ LoginController::class , 'LogIn' ]);
