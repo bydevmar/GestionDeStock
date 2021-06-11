@@ -25,4 +25,4 @@ Route::put('admin/lignecommandes/{commande_id}/{article_id}', [LigneCommandeCont
 Route::get( '/login' , [ LoginController::class , 'index' ]);
 Route::post( '/login' , [ LoginController::class , 'LogIn' ]);
 
-Route::get('/admin',[AdminDashboard::class ,'index']);
+Route::get('/admin/dashboard',[AdminDashboard::class ,'index']);

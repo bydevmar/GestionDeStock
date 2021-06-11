@@ -1,4 +1,4 @@
-@extends('pages.admin.index')
+@extends('pages.admin.dashboard.index')
 @section('maindashboard')
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -22,7 +22,7 @@
 
                     <div class="form-group ">
                         <label for="villes">Ville :</label><br>
-                        <select class="form-select mb-3" aria-label="villes" name="villes">
+                        <select class="form-control mb-3" aria-label="villes" name="villes">
                             <option selected value="">Selectionner ville</option>
                             @foreach ($villes as $ville)
                                 <option value="{{ $ville->id }}">{{ $ville->nomville }}</option>

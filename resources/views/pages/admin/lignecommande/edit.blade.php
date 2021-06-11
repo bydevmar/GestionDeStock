@@ -1,4 +1,4 @@
-@extends('pages.admin.index')
+@extends('pages.admin.dashboard.index')
 @section('maindashboard')
     <div class="container mt-4">
         <div class="row justify-content-center">

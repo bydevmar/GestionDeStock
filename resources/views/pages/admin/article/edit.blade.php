@@ -1,4 +1,4 @@
-@extends('pages.admin.index')
+@extends('pages.admin.dashboard.index')
 @section('maindashboard')
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -49,10 +49,12 @@
 
                     <div class="">
                         <label for="imagearticle" class="mb-1">Photo d'article:</label>
-                        <img id="uploadPreview" src="{{ asset('storage/photos/' . $article->imagearticle) }}"
-                            class="form-control img-thumbnail w-25  h-25" alt="Responsive image">
-                        <input type="file" name="imagearticle" onchange="PreviewImage();" id="imagearticle"
-                            class="mb-4" aria-valuetext="{{ $article->imagearticle }}">
+                        <div class="card-fluid">
+                            <img id="uploadPreview" src="{{ asset('storage/photos/' . $article->imagearticle) }}"
+                                class="form-control img-thumbnail w-25  h-25" alt="Responsive image">
+                            <input type="file" name="imagearticle" onchange="PreviewImage();" id="imagearticle" class="mb-4"
+                                aria-valuetext="{{ $article->imagearticle }}">
+                        </div>
 
                         <script type="text/javascript">
                             function PreviewImage() {
@@ -63,6 +65,7 @@
                                     document.getElementById("uploadPreview").src = oFREvent.target.result;
                                 };
                             };
+
                         </script>
                     </div>
 

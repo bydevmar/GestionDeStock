@@ -1,4 +1,4 @@
-@extends('pages.admin.index')
+@extends('pages.admin.dashboard.index')
 @section('maindashboard')
     <div class="container">
         <h1>Liste des articles</h1>

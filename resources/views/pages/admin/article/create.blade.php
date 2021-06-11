@@ -1,9 +1,10 @@
-@extends('pages.admin.index')
+@extends('pages.admin.dashboard.index')
 @section('maindashboard')
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-6  ">
                 <h1>Creation d'un Article</h1>
+                
                 <form class="form" method="POST" action="{{ url('admin/articles') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group  @if ($errors->get('nomarticle')) has-error @endif">
@@ -39,12 +40,11 @@
                                 <li>{{ $message }}</li>
                             @endforeach
                         @endif
-
                     </div>
 
-                    <div class="">
-                        <label for="imagearticle" class="mb-1">Photo d'article:</label>
-                        <input type="file" name="imagearticle" id="imagearticle" class="form-control  mb-4">
+                    <label for="imagearticle" class="mb-1">Photo d'article:</label>
+                    <div class="card-fluid">
+                        <input type="file" name="imagearticle" onchange="PreviewImage();" id="imagearticle" class="mb-4">
                     </div>
 
                     <div class="form-group ">
