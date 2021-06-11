@@ -36,6 +36,7 @@ class LigneCommandeController extends Controller
                 "cm.etatcommande",
                 "cm.datecommande"
             )
+            ->whereNull("cl.deleted_at")
             ->get();
         return view('pages.admin.lignecommande.index', ['lignecommandes' => $lignecommandes]);
     }

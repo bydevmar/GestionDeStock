@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Commande extends Model
 {
+    use SoftDeletes;
     use HasFactory;
-
-    public function articles(){
-        return $this->belongsToMany(Article::class,'commande_article');
-    }
+    
+    protected $dates = ['deleted_at'];
 }

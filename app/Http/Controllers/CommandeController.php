@@ -16,6 +16,7 @@ class CommandeController extends Controller
         $commandes = DB::table("commandes")
             ->join("clients", "clients.id", "=", "commandes.client_id")
             ->select('commandes.id AS commande_id',"clients.id AS client_id", 'clients.nomclient', 'clients.prenomclient', 'commandes.datecommande', 'commandes.etatcommande')
+            ->whereNull("commandes.deleted_at")
             ->get();
         return view('pages.admin.commande.index', ['commandes' => $commandes]);
     }

@@ -16,6 +16,7 @@ class ClientController extends Controller
         $clients = DB::table("clients")
             ->join("villes", "clients.ville_id", "=", "villes.id")
             ->select('clients.id', 'clients.nomclient', 'clients.prenomclient', 'villes.nomville', 'clients.adresseclient', 'clients.created_at')
+            ->whereNull("clients.deleted_at")
             ->get();
 
         return view('pages.admin.client.index', ['clients' => $clients]);
