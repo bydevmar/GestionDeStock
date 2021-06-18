@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\articleRequest;
 use App\Models\Article;
 use App\Models\Categorie;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 

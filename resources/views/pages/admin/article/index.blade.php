@@ -1,6 +1,6 @@
 @extends('pages.admin.dashboard.index')
 @section('maindashboard')
-    <div class="container">
+    <div class="container" id="app">
         <h1>Liste des articles</h1>
         <div class="row">
             <div class="col-md-12">

@@ -23,6 +23,7 @@
                         <label for="descriptionarticle" class="mb-1">Description :</label>
                         <textarea name="descriptionarticle" id="descriptionarticle"
                             class="form-control mb-4">{{ old('descriptionarticle') }}</textarea>
+                            
                         @if ($errors->get('descriptionarticle'))
                             @foreach ($errors->get('descriptionarticle') as $message)
                                 <li>{{ $message }}</li>
