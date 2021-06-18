@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\commandeRequest;
 use App\Models\Client;
 use App\Models\Commande;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class CommandeController extends Controller
         return view('pages.admin.commande.create', ["clients" => $clietns]);
      }
 
-    public function store(Request $r){
+    public function store(commandeRequest $r){
         $commande = new Commande();
         $commande->datecommande = $r->input('datecommande');
         $commande->client_id = $r->input('client');
@@ -45,7 +46,7 @@ class CommandeController extends Controller
         return view("pages.admin.commande.edit", ['clients' => $clients, 'commande' => $commande]);
     }
 
-    public function update(Request $r,$id){
+    public function update(commandeRequest $r,$id){
         $commande = Commande::find($id);
         if($commande){
             $commande->datecommande = $r->input('datecommande');

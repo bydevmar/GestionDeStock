@@ -12,21 +12,32 @@
                     <div class="form-group ">
                         <label for="client">Client :</label><br>
                         <select class="form-control mb-3" aria-label="client" name="client">
-                            <option selected value="">Selectionner un Client</option>
+                            <option selected >Selectionner un Client</option>
                             @foreach ($clients as $client)
                                 <option value="{{ $client->id }}">{{ $client->nomclient . ' ' . $client->prenomclient }}
                                 </option>
                             @endforeach
+                            @if ($errors->get('client'))
+                                @foreach ($errors->get('client') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
-                    
+
                     <div class="form-group ">
                         <label for="datecommande">Date Commande:</label>
                         <input type="date" id="datecommande" name="datecommande" class="form-control "
-                            value="{{ old('datecommande') }}"
-                            >
+                            value="{{ old('datecommande') }}">
+                        @if ($errors->get('datecommande'))
+                            @foreach ($errors->get('datecommande') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        @endif
                     </div>
-                    <script> document.getElementById('datecommande').valueAsDate = new Date();</script>
+                    <script>
+                        document.getElementById('datecommande').valueAsDafte = new Date();
+                    </script>
 
                     <div class="form-group">
                         <label for="client">Etat de Commande :</label><br>
