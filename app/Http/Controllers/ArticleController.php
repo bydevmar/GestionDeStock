@@ -13,10 +13,7 @@ class ArticleController extends Controller
 {
     public function __construct()
     {
-        //il faut se connecter pour acceder a cette controller
-        //$this->middleware('auth');
-
-
+        //$this->middleware('islogged');
     }
 
     public function index()

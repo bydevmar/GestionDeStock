@@ -25,17 +25,24 @@
                                     </option>
                                 @endif
                             @endforeach
+                            @if ($errors->get('datecommande'))
+                                @foreach ($errors->get('datecommande') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
 
                     <div class="form-group ">
                         <label for="datecommande">Date Commande:</label>
-                        <input type="date" id="datecommande" name="datecommande" class="form-control "
-                            value="{{ old('datecommande') }}">
+                        <input type="date" id="datecommande" name="datecommande" class="form-control"
+                            value="{{ $client->datecommande }}">
+                        @if ($errors->get('datecommande'))
+                            @foreach ($errors->get('datecommande') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        @endif
                     </div>
-                    <script>
-                        document.getElementById('datecommande').valueAsDate = new Date();
-                    </script>
 
                     <div class="form-group">
                         <label for="client">Etat de Commande :</label><br>

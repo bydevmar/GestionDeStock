@@ -8,39 +8,41 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function index(Request $re)
     {
+        if($re->session()->get("who") && $re->session()->get("admin")){
+            return redirect("/admin/dashboard");
+        }else if($re->session()->get("who") && !$re->session()->get("admin")){
+            //return redirect("/client/dashboard");
+        }
         return view('pages.login.login');
     }
 
-    public function logIn(Request $re)
+    public function LogIn(Request $re)
     {
         $radio = $re->usertype;
-        return dd($radio);
         if ($radio == "usertypeadmin") {
             $user = User::where('email', '=', $re->email)->first();
-            if (!$user) {
-                return back()->with('fail', "email non trouvé!");
-            } else {
+
+            if ($user) {
                 if ($re->password == $user->password) {
-                    $re->session()->put('loggedadmin', $user->id);
-                    //redirect to admin dashboard
-                } else {
-                    return back()->with('fail', "mot de passe incorrecte!");
+                    $re->session()->put('who', $user);
+                    $re->session()->put('admin', true);
+                    return redirect("/admin/dashboard");
                 }
             }
-        }else{
-            $user = Client::where('email', '=', $re->email)->first();
-            if (!$user) {
-                return back()->with('fail', "email non trouvé!");
-            } else {
+            return back()->with('fail', "email ou mot de passe incorrecte!");
+        } else if ($radio == "usertypeclient") {
+            $user = Client::where('emailclient', '=', $re->email)->first();
+
+            if ($user) {
                 if ($re->password == $user->password) {
-                    $re->session()->put('loggedclient', $user->id);
-                    //redirect to client dashboard
-                } else {
-                    return back()->with('fail', "mot de passe incorrecte!");
+                    $re->session()->put('who', $user);
+                    $re->session()->put('admin', false);
+                    //return redirect("/admin/dashboard");
                 }
             }
+            return back()->with('fail', "email ou mot de passe incorrecte!");
         }
     }
 }

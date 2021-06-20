@@ -3,7 +3,7 @@
 @section('content')
     <form method="POST" action="{{ url('/login') }}" enctype="multipart/form-data">
         @csrf
-        
+
         <div class="container">
             <div class="row justify-content-center pt-4">
                 <div class="col-md-6 col-offset-6 ">
@@ -17,22 +17,21 @@
                     </div>
                     <div class="form-group ">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="usertype" id="usertypeclient" value="usertypeclient" checked>
+                            <input type="radio" name="usertype" id="usertypeclient" value="usertypeclient" checked>
                             <label class="form-check-label" for="usertypeclient">
-                              Client
+                                Client
                             </label>
-                          </div>
-                          <div class="form-check form-check-inline pl-4">
-                            <input class="form-check-input" type="radio" name="usertype" id="usertypeadmin" value="usertypeadmin">
+                        </div>
+                        <div class="form-check form-check-inline pl-4">
+                            <input type="radio" name="usertype" id="usertypeadmin" value="usertypeadmin">
                             <label class="form-check-label" for="usertypeadmin">
-                              Admin
+                                Admin
                             </label>
-                          </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary form-control">Login</button>
                     </div>
-                    
                 </div>
             </div>
         </div>
