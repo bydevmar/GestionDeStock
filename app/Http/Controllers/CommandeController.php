@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\DB;
 
 class CommandeController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
     }
 
     public function index(){

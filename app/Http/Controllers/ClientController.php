@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+    
     public function index()
     {
         $clients = DB::table("clients")
