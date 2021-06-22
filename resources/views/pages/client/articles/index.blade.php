@@ -1,7 +1,7 @@
 @extends('pages.client.dashboard.index')
 @section('maindashboard')
     <div class="container" id="app">
-        <h1 class="h1">Articles</h1>
+        <h1 class="h1 ">Articles</h1>
         <div class="row">
             <div class="col-md-12">
                 @if ($message = Session::get('success'))
@@ -32,11 +32,12 @@
                                 </a>
                             </li>
                         </ul>
+                        <form action="" class="form">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <input class="form-control mt-1" type="number" name="quantitearticle" value="1" min="1" max="100">
+                                        <input class="form-control mt-1" required type="number" name="quantitearticle" value="1" min="1" max="100">
                                     </div>
                                     <div class="col-md-7">
                                         <a href="" class="form-control btn btn-success">
@@ -46,6 +47,7 @@
                                 </div>
                             </li>
                         </ul>
+                    </form>
                     </div>
                 @endforeach
             </div>
