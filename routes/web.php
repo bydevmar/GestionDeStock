@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\ArticleController;
 use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\CommandeController;
 use App\Http\Controllers\admin\LigneCommandeController;
+use App\Http\Controllers\client\ArticlesController;
 use App\Http\Controllers\client\ClientDashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -32,3 +33,4 @@ Route::delete('admin/lignecommandes/{commande_id}/{article_id}', [LigneCommandeC
 
 ///////////Client Routes
 Route::get('/client/dashboard',[ClientDashboardController::class ,'index']);
+Route::get('/client/articles',[ArticlesController::class ,'index']);
